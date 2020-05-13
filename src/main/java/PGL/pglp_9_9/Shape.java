@@ -9,13 +9,13 @@ public abstract class Shape implements GraphicShape{
 	  /**
 	   * Group id
 	   */
-	  private int id;
+	  private int groupId;
 	  /**
 	   * @param nameAtt.
 	   */
 	  public Shape(String name1,int id1) {
 	    name = name1;
-	    id = id1;
+	    groupId = id1;
 	  }
 	  /**
 	   * @param x 
@@ -41,13 +41,13 @@ public abstract class Shape implements GraphicShape{
 	   * @return id 
 	   */
 	  public int getGroupId() {
-			return id;
+			return groupId;
 		}
 	  /**
 	   * @param groupId1 
 	   */
 	  public void setGroupId(int groupId1) {
-			this.id = groupId1;
+			this.groupId = groupId1;
 		}
 
 	  /**

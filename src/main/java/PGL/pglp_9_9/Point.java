@@ -9,7 +9,11 @@ public class Point {
 	 * cord Y
 	 */
 	private double y;
-	
+	/**
+	 * Constructeur
+	 * @param newX
+	 * @param newY
+	 */
 	public Point(final double newX, final double newY) {
 		x = newX;
 		y = newY; 
