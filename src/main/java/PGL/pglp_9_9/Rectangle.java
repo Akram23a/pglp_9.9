@@ -6,7 +6,8 @@ public class Rectangle extends Shape{
 	private double height;
 	private double width;
 	
-	public Rectangle(int Groupid1, final Point bottomLeft1,final double height1, final double width1) {
+	public Rectangle(int Groupid1, final Point bottomLeft1,
+			final double height1, final double width1) {
 		super("rectangle", Groupid1);
 		this.bottomLeft = bottomLeft1;
 		this.height = height1;
@@ -14,9 +15,8 @@ public class Rectangle extends Shape{
 	}
 
 	@Override
-	public void move(double x, double y) {
-		bottomLeft.setX(x);
-		bottomLeft.setY(y);
+	public void move(double x1, double y1) {
+		bottomLeft.move(x1, y1);
 	}
 
 	@Override

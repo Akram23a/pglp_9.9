@@ -14,15 +14,14 @@ public class Cercle extends Shape {
 	 * @param name1
 	 * @param id1
 	 */
-	public Cercle(final String name1, final int id1, final Point centre1, final double r) {
-		super(name1, id1);
+	public Cercle( final int id1, final Point centre1, final double r) {
+		super("Cercle", id1);
 		centre = new Point(centre1.getX(), centre1.getY());
 		rayon = r;
 	}
 	@Override
-	public void move(double x, double y) {
-	    centre.setX(centre.getX()+x);
-		centre.setY(centre.getY()+y);
+	public void move(double x1, double y1) {
+		centre.move(x1, y1);
 	}
 	@Override
 	public String display() {

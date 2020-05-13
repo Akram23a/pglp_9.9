@@ -10,13 +10,18 @@ public class Point {
 	 */
 	private double y;
 	/**
-	 * Constructeur
+	 * Constructor
 	 * @param newX
 	 * @param newY
 	 */
 	public Point(final double newX, final double newY) {
 		x = newX;
 		y = newY; 
+	}
+	
+	public Point(final Point P) {
+		x = P.getX(); 
+		y = P.getY(); 
 	}
 	/**
 	 * 
@@ -38,6 +43,15 @@ public class Point {
 	 */
 	public double getY() {
 		return y;
+	}
+	/**
+	 * Move
+	 * @param x1
+	 * @param y1
+	 */
+	public void move(double x1, double y1) {
+		this.setX(x1);
+		this.setY(y1);
 	}
 	/**
 	 * 
