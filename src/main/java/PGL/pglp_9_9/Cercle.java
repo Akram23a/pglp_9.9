@@ -14,8 +14,8 @@ public class Cercle extends Shape {
 	 * @param name1
 	 * @param id1
 	 */
-	public Cercle( final int id1, final Point centre1, final double r) {
-		super("Cercle", id1);
+	public Cercle(final String name1, final int id1, final Point centre1, final double r) {
+		super(name1, id1);
 		centre = new Point(centre1.getX(), centre1.getY());
 		rayon = r;
 	}

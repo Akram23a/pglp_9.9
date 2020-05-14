@@ -2,6 +2,7 @@ package PGL.pglp_9_9;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Properties;
 /**
  * 
  * @author Akram
@@ -26,18 +27,24 @@ public interface DAO<T> {
 	 * @param obj
 	 * @return
 	 */
-	public T delete(T obj);
+	public T delete(String name);
 	/**
 	 * Find
 	 * @param obj
 	 * @return
 	 */
-	public T find(T obj);
+	public T find(String name);
 	/**
 	 * 
 	 * @return
 	 */
 	public static Connection getConnection() {
+		
+		Properties connectionProps=new Properties();
+		
+		connectionProps.put("user","root");
+		connectionProps.put("password","");
+		
 	    Connection conn = null;
 	    String driver = "com.mysql.jdbc.Driver";
 	    try {
@@ -46,7 +53,7 @@ public interface DAO<T> {
 	      e.printStackTrace();
 	    }
 	    try {
-	      conn = DriverManager.getConnection("jdbc:mysql://localhost/test");
+	      conn = DriverManager.getConnection("jdbc:mysql://localhost/test",connectionProps );
 	    } catch (SQLException e) {
 	      e.printStackTrace();
 	    }

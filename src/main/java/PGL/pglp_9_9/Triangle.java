@@ -20,8 +20,9 @@ public class Triangle extends Shape{
 	 * @param pp2
 	 * @param pp3
 	 */
-	public Triangle(final int id1, final Point pp1, final Point pp2, final Point pp3) {
-		super("Triangle", id1);
+	public Triangle(final String name1, 
+		final int id1, final Point pp1, final Point pp2, final Point pp3) {
+		super(name1, id1);
 		p1 = new Point(pp1);
 		p2 = new Point(pp2);
 		p3 = new Point(pp3);

@@ -17,7 +17,7 @@ public class Carre extends Shape {
 	 * @param p1
 	 */
 	public Carre(String name1, int id1, final double length1, final Point p1) {
-		super("Carre", id1);
+		super(name1, id1);
 		setBottomLeft(new Point(p1));
 		setLength(length1);
 	}
