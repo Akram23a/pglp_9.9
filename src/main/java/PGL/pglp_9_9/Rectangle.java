@@ -6,12 +6,13 @@ public class Rectangle extends Shape{
 	private double height;
 	private double width;
 	
-	public Rectangle(int Groupid1, final Point bottomLeft1,
-			final double height1, final double width1) {
-		super("rectangle", Groupid1);
+
+
+	public Rectangle(String string, int int1, Point bottomLeft1, double double1, double double2) {
+		super(string, int1);
 		this.bottomLeft = bottomLeft1;
-		this.height = height1;
-		this.width = width1;
+		this.height = double1;
+		this.width = double2;
 	}
 
 	@Override
