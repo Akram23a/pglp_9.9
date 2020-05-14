@@ -7,7 +7,7 @@ package PGL.pglp_9_9;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class ShapesGroup implements GraphicShape{
+public class ShapesGroup extends Shape implements GraphicShape{
 	/**
 	 * Name
 	 */
@@ -26,7 +26,8 @@ public abstract class ShapesGroup implements GraphicShape{
 	 * @param name
 	 * @param id
 	 */
-	public ShapesGroup(String name, int id) {
+	public ShapesGroup(final String name, final int id) {
+		super(name, id);
 		groupName = name;
 		groupId = id;
 	    shapes = new ArrayList<Shape>();
@@ -108,4 +109,19 @@ public abstract class ShapesGroup implements GraphicShape{
 		}
 	    return this.getGroupName()+result;
 	  }
+	@Override
+	public void move(double x, double y) {
+	    for (Shape shape : shapes) {
+	        shape.move(x, y);
+	      }
+		
+	}
+	@Override
+	public String display() {
+		String result = "";
+	    for (Shape shape : shapes) {
+	        result += shape.display()+"\n";
+	      }
+		return result;
+	}
 }

@@ -30,7 +30,7 @@ public class RectangleJDBC implements DAO<Rectangle>{
 			      System.out.println("Creating table in given database...");
 			      stmt = connect.createStatement();
 			      
-			      String sql = "CREATE TABLE rectangles " +
+			      String sql = "CREATE TABLE IF NOT EXISTS rectangles " +
 			                   "(name VARCHAR(30) not NULL, " +
 			                   " x DOUBLE, " + 
 			                   " y DOUBLE, " + 

@@ -29,7 +29,7 @@ public class CercleJDBC implements DAO<Cercle>{
 			      System.out.println("Creating table in given database...");
 			      stmt = connect.createStatement();
 			      
-			      String sql = "CREATE TABLE CERCLES " +
+			      String sql = "CREATE TABLE IF NOT EXISTS CERCLES " +
 			                   "(name VARCHAR(30) not NULL, " +
 			                   " x DOUBLE, " + 
 			                   " y DOUBLE, " + 

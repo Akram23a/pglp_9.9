@@ -30,7 +30,7 @@ public class TriangleJDBC implements DAO<Triangle>{
 			      System.out.println("Creating table in given database...");
 			      stmt = connect.createStatement();
 			      
-			      String sql = "CREATE TABLE triangles " +
+			      String sql = "CREATE TABLE IF NOT EXISTS triangles " +
 			                   "(name VARCHAR(30) not NULL, " +
 			                   " x1 DOUBLE, " + 
 			                   " y1 DOUBLE, " + 
