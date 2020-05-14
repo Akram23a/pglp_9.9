@@ -15,12 +15,12 @@ public class CercleDaoTest {
 	  @Test
 	  public void testFind() {
 		  
-		CercleJDBC cjdbc=new CercleJDBC();
+		CercleJDBC jdbcShape=new CercleJDBC();
 
 	    Point point = new Point(0.0,0.0);
 		Cercle  c2= new Cercle("c2",2,point,2.0);
-		cjdbc.create(c2);
-	    Cercle c = cjdbc.find("c2");
+		jdbcShape.create(c2);
+	    Cercle c = jdbcShape.find("c2");
 	    assertEquals(c.getName(),"c2");
 	    Double x = c.getCentre().getX();
 	    Double y = c.getCentre().getY();

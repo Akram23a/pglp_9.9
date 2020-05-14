@@ -12,12 +12,12 @@ public class CarreDaoTest {
 	  @Test
 	  public void testFind() {
 		 
-		CarreJDBC cjdbc=new CarreJDBC();
+		CarreJDBC jdbcShape=new CarreJDBC();
 
 	    Point point = new Point(0.0,0.0);
 		Carre  c2= new Carre("c3",2,2.0,point);
-		cjdbc.create(c2);
-		Carre c = cjdbc.find("c3");
+		jdbcShape.create(c2);
+		Carre c = jdbcShape.find("c3");
 	    assertEquals(c.getName(),"c3");
 	    Double x = c.getBottomLeft().getX();
 	    Double y = c.getBottomLeft().getY();
@@ -30,12 +30,12 @@ public class CarreDaoTest {
 	  
 	  @Test
 	  public void testDelete() {
-		CarreJDBC cjdbc=new CarreJDBC();
+		CarreJDBC jdbcShape=new CarreJDBC();
 		  Point p = new Point(2.0,2.0);
 		  Carre r = new Carre("c11",2,5.0,p);
-		  cjdbc.create(r);
-		  cjdbc.delete(r.getName());
-		  assertNull(cjdbc.find("c11"));
+		  jdbcShape.create(r);
+		  jdbcShape.delete(r.getName());
+		  assertNull(jdbcShape.find("c11"));
 	  }
 	  
 }

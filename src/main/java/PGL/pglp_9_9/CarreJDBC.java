@@ -88,7 +88,7 @@ public class CarreJDBC implements DAO<Carre>{
 	    connect = DAO.getConnection();
 	    PreparedStatement update =  null;
 	    String updateString = "update carres set x = ?, "
-	        + "y = ?, r = ?, gid = ? where name = ?";
+	        + "y = ?, l = ?, gid = ? where name = ?";
 	    try {
 	      update = connect.prepareStatement(updateString);
 	      update.setDouble(1, obj.getBottomLeft().getX());
