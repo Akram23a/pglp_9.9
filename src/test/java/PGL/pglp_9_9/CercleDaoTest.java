@@ -13,7 +13,7 @@ public class CercleDaoTest {
 
 	
 	  @Test
-	  public void Test2find() {
+	  public void testFind() {
 		  
 		CercleJDBC cjdbc=new CercleJDBC();
 
@@ -30,4 +30,7 @@ public class CercleDaoTest {
 	    assertTrue(redius.equals(2.0));
 	    assertEquals(c.getGroupId(),2);
 	  }
+	  
+
+
 }

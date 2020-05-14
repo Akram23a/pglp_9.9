@@ -87,7 +87,7 @@ public class CercleJDBC implements DAO<Cercle>{
 	    connect = DAO.getConnection();
 	    PreparedStatement update =  null;
 	    String updateString = "update cercles set x = ?, "
-	        + "y = ?, redius = ?, groupId = ? where name = ?";
+	        + "y = ?, r = ?, gid = ? where name = ?";
 	    try {
 	      update = connect.prepareStatement(updateString);
 	      update.setDouble(1, obj.getCentre().getX());
@@ -116,7 +116,7 @@ public class CercleJDBC implements DAO<Cercle>{
 		try{
 		PreparedStatement prepare=connect.prepareStatement("delete from cercles where name = ?");
 		prepare.setString(1,name);
-		prepare.executeQuery();
+		prepare.executeUpdate();
 		connect.close();
 		}catch(SQLException e){
 			e.printStackTrace();
