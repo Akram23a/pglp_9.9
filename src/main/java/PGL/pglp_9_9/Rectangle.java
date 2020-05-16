@@ -7,7 +7,14 @@ public class Rectangle extends Shape{
 	private double width;
 	
 
-
+	/**
+	 * Constructor
+	 * @param string
+	 * @param int1
+	 * @param bottomLeft1
+	 * @param double1
+	 * @param double2
+	 */
 	public Rectangle(String string, int int1, Point bottomLeft1, double double1, double double2) {
 		super(string, int1);
 		this.bottomLeft = bottomLeft1;
