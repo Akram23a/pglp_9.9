@@ -17,10 +17,10 @@ public class TriangleDaoTest {
 
 		  Triangle  t= new Triangle("t1",2,p1,p2,p3);
 		  jdbcShape.create(t);
-		  Triangle  t2 = new Triangle("t1",3, p1,p4,p5);
+		  Triangle  t2 = new Triangle("t2",3, p1,p4,p5);
 		  jdbcShape.update(t2);
 		  Triangle t3 = jdbcShape.find("t1");
-		  assertEquals(t.getName(),"t1");
+		  assertEquals(t3.getName(),"t1");
 		  Double x = t3.getP1().getX();
 		  Double y = t3.getP1().getY();
 		  assertTrue(x.equals(2.0));

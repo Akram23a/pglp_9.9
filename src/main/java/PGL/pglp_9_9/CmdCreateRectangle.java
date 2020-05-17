@@ -4,7 +4,7 @@ package PGL.pglp_9_9;
  * @author Akram
  *
  */
-public class CmdCreateRectangle implements Command{
+public class CmdCreateRectangle implements CmdCreate<Rectangle>{
 	
 	private String name;
 	private Point bottomLeft;
@@ -29,8 +29,7 @@ public class CmdCreateRectangle implements Command{
 	  }
 
 	  @Override
-	  public void execute() {
-		// TODO Auto-generated method stub
-	    new Rectangle(name, groupId, bottomLeft, height, width);
+	  public Rectangle execute() {
+		return new Rectangle(name, groupId, bottomLeft, height, width);
 	  }
 }

@@ -4,7 +4,7 @@ package PGL.pglp_9_9;
  * @author Akram
  *
  */
-public class CmdMoveCircle implements Command{
+public class CmdMoveCircle implements CmdMove{
 	/**
 	 * cercle
 	 */

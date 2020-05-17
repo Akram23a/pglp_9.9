@@ -2,7 +2,6 @@ package PGL.pglp_9_9;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.Properties;
 /**
  * 
  * @author Akram
@@ -40,23 +39,19 @@ public interface DAO<T> {
 	 */
 	public static Connection getConnection() {
 		
-		Properties connectionProps=new Properties();
-		
-		connectionProps.put("user","root");
-		connectionProps.put("password","");
-		
-	    Connection conn = null;
-	    String driver = "com.mysql.jdbc.Driver";
+	    Connection connexion = null;
+	    String driver = "org.apache.derby.jdbc.EmbeddedDriver";
 	    try {
 	      Class.forName(driver);
 	    } catch (ClassNotFoundException e) {
 	      e.printStackTrace();
 	    }
 	    try {
-	      conn = DriverManager.getConnection("jdbc:mysql://localhost/test",connectionProps );
+	      connexion = DriverManager.getConnection("jdbc:derby:shapedb;create=true");
 	    } catch (SQLException e) {
 	      e.printStackTrace();
 	    }
-	    return conn;
+	    return connexion;
 	  }
+	  
 }

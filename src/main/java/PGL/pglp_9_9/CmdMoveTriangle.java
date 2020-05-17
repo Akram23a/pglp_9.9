@@ -4,7 +4,7 @@ package PGL.pglp_9_9;
  * @author Akram
  *
  */
-public class CmdMoveTriangle implements Command{
+public class CmdMoveTriangle implements CmdMove{
 	/**
 	 * 
 	 */

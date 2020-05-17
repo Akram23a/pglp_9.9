@@ -4,7 +4,7 @@ package PGL.pglp_9_9;
  * @author Akram
  *
  */
-public class CmdMoveRectangle implements Command{
+public class CmdMoveRectangle implements CmdMove{
 	/**
 	 * 
 	 */

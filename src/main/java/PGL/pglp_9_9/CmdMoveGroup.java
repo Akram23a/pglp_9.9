@@ -4,7 +4,7 @@ package PGL.pglp_9_9;
  * @author Akram
  *
  */
-public class CmdMoveGroup implements Command{
+public class CmdMoveGroup implements CmdMove{
 	/**
 	 * 
 	 */

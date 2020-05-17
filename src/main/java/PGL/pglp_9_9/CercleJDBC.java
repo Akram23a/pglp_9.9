@@ -16,56 +16,27 @@ public class CercleJDBC implements DAO<Cercle>{
 	 */
 	private java.sql.Statement stmt;
 	
-	
 	public CercleJDBC() {
-		   try{
-			      connect = DAO.getConnection();
-			      if(connect!= null)
-			    	  System.out.println("Connected database successfully...");
-			      else
-			    	  System.out.println("NOPE");
-
-			      //STEP 4: Execute a query
-			      System.out.println("Creating table in given database...");
-			      stmt = connect.createStatement();
-			      
-			      String sql = "CREATE TABLE IF NOT EXISTS CERCLES " +
-			                   "(name VARCHAR(30) not NULL, " +
-			                   " x DOUBLE, " + 
-			                   " y DOUBLE, " + 
-			                   " r DOUBLE, " + 
-			                   " gid INTEGER, " + 
-			                   " PRIMARY KEY ( name ))"; 
-			      stmt.executeUpdate(sql);
-			      System.out.println("Created table in given database...");
-			   }catch(SQLException se){
-			      //Handle errors for JDBC
-			      se.printStackTrace();
-			   }catch(Exception e){
-			      //Handle errors for Class.forName
-			      e.printStackTrace();
-			   }finally{
-			      //finally block used to close resources
-			      try{
-			         if(stmt!=null)
-			        	connect.close();
-			      }catch(SQLException se){
-			      }// do nothing
-			      try{
-			         if(connect!=null)
-			        	connect.close();
-			      }catch(SQLException se){
-			         se.printStackTrace();
-			      }//end finally try
-			   }//end try
-
+		connect = DAO.getConnection();
+		try {
+			ResultSet r = connect.getMetaData().getTables(null, null, "CERCLES", null);
+			stmt = connect.createStatement();
+			if(!r.next()) {
+				stmt.execute("CREATE TABLE CERCLES(name varchar(50) NOT NULL PRIMARY KEY, " 
+					      + " x double NOT NULL, y double NOT NULL, r double Not Null,gid integer)");
+			}
+		    stmt.close();
+		    connect.close();
+		}catch(SQLException e) {
+		      e.printStackTrace();
+		}
 	}
 	@Override
 	public Cercle create(Cercle obj) {
 		try{
 		    connect = DAO.getConnection();
 			PreparedStatement prepare = 
-					connect.prepareStatement("INSERT INTO cercles(name,x,y,r,gid)"
+					connect.prepareStatement("INSERT INTO CERCLES(name,x,y,r,gid)"
 												+ " VALUES(?,?,?,?,?)");
 			prepare.setString(1,obj.getName());
 			prepare.setDouble(2,obj.getCentre().getX());
@@ -114,7 +85,7 @@ public class CercleJDBC implements DAO<Cercle>{
 	public Cercle delete(String name) {
 	    connect = DAO.getConnection();
 		try{
-		PreparedStatement prepare=connect.prepareStatement("delete from cercles where name = ?");
+		PreparedStatement prepare=connect.prepareStatement("delete from CERCLES where name = ?");
 		prepare.setString(1,name);
 		prepare.executeUpdate();
 		connect.close();
@@ -129,10 +100,10 @@ public class CercleJDBC implements DAO<Cercle>{
 	    connect = DAO.getConnection();
 	    Cercle c = null;
 		try{
-		PreparedStatement prepare=connect.prepareStatement("SELECT * FROM cercles WHERE name=?");
+		PreparedStatement prepare=connect.prepareStatement("SELECT * FROM CERCLES WHERE name=?");
 		prepare.setString(1,name);
 		ResultSet result =prepare.executeQuery();
-		if(result.first()){
+		if(result.next()){
 			c = new Cercle( result.getString("name"), result.getInt("gid"),
 					new Point( result.getDouble("x"), result.getDouble("y")), 
 					result.getDouble("r"));

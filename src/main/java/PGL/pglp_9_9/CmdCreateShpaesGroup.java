@@ -1,6 +1,6 @@
 package PGL.pglp_9_9;
 
-public class CmdCreateShpaesGroup implements Command{
+public class CmdCreateShpaesGroup implements CmdCreate<ShapesGroup>{
 	private String name;
 	private int id;
 	/**
@@ -14,8 +14,7 @@ public class CmdCreateShpaesGroup implements Command{
 	}
 	
 	@Override
-	public void execute() {
-	    // TODO Auto-generated method stub
-	    new ShapesGroup(name,id);	
+	public ShapesGroup execute() {
+	    return new ShapesGroup(name,id);	
 	}
 }

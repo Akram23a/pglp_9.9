@@ -1,6 +1,6 @@
 package PGL.pglp_9_9;
 
-public class CmdCreateSquare implements Command {
+public class CmdCreateSquare implements CmdCreate<Carre> {
 	private String name;
 	private Point bottomLeft;
 	private double length;
@@ -22,8 +22,7 @@ public class CmdCreateSquare implements Command {
 	  }
 
 	  @Override
-	  public void execute() {
-		// TODO Auto-generated method stub
-	    new Carre(name, groupId, length, bottomLeft);
+	  public Carre execute() {
+		return new Carre(name, groupId, length, bottomLeft);
 	  }
 }

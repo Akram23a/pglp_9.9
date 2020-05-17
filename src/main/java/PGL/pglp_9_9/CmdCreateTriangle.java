@@ -4,7 +4,7 @@ package PGL.pglp_9_9;
  * @author Akram
  *
  */
-public class CmdCreateTriangle implements Command{
+public class CmdCreateTriangle implements CmdCreate<Triangle>{
 
 	  private String name;
 
@@ -32,8 +32,8 @@ public class CmdCreateTriangle implements Command{
 	  }
 
 	  @Override
-	  public void execute() {
-	    new Triangle(name,groupId,p1,p2,p3);
+	  public Triangle execute() {
+	    return new Triangle(name,groupId,p1,p2,p3);
 	  }
 
 }

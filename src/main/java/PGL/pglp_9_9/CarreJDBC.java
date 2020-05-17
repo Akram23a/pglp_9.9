@@ -18,47 +18,26 @@ public class CarreJDBC implements DAO<Carre>{
 	/**
 	 * Constructor
 	 */
+	
 	public CarreJDBC() {
-		   try{
-			      connect = DAO.getConnection();
-			      if(connect!= null)
-			    	  System.out.println("Connected database successfully...");
-			      else
-			    	  System.out.println("NOPE");
-
-			      //STEP 4: Execute a query
-			      System.out.println("Creating table in given database...");
-			      stmt = connect.createStatement();
-			      
-			      String sql = "CREATE TABLE carres " +
-			                   "(name VARCHAR(30) not NULL, " +
-			                   " x DOUBLE, " + 
-			                   " y DOUBLE, " + 
-			                   " l DOUBLE, " + 
-			                   " gid INTEGER, " + 
-			                   " PRIMARY KEY ( name ))"; 
-			      stmt.executeUpdate(sql);
-			      System.out.println("Created table in given database...");
-			   }catch(SQLException se){
-			      //Handle errors for JDBC
-			      se.printStackTrace();
-			   }catch(Exception e){
-			      //Handle errors for Class.forName
-			      e.printStackTrace();
-			   }finally{
-			      //finally block used to close resources
-			      try{
-			         if(stmt!=null)
-			        	connect.close();
-			      }catch(SQLException se){
-			      }// do nothing
-			      try{
-			         if(connect!=null)
-			        	connect.close();
-			      }catch(SQLException se){
-			         se.printStackTrace();
-			      }//end finally try
-			   }//end try
+		connect = DAO.getConnection();
+		try {
+			ResultSet r = connect.getMetaData().getTables(null, null, "CARRES", null);
+			stmt = connect.createStatement();
+			if(!r.next()) {
+				stmt.execute("CREATE TABLE IF NOT EXISTS CARRES " +
+					    "(name VARCHAR(30) not NULL, " +
+					    " x DOUBLE, " + 
+					    " y DOUBLE, " + 
+					    " l DOUBLE, " + 
+					    " gid INTEGER, " + 
+					    " PRIMARY KEY ( name ))");
+			}
+		    stmt.close();
+		    connect.close();
+		}catch(SQLException e) {
+		      e.printStackTrace();
+		}
 
 	}
 	@Override
@@ -66,7 +45,7 @@ public class CarreJDBC implements DAO<Carre>{
 		try{
 		    connect = DAO.getConnection();
 			PreparedStatement prepare = 
-					connect.prepareStatement("INSERT INTO carres(name,x,y,l,gid)"
+					connect.prepareStatement("INSERT INTO CARRES(name,x,y,l,gid)"
 												+ " VALUES(?,?,?,?,?)");
 			prepare.setString(1,obj.getName());
 			prepare.setDouble(2,obj.getBottomLeft().getX());
@@ -115,7 +94,7 @@ public class CarreJDBC implements DAO<Carre>{
 	public Carre delete(String name) {
 	    connect = DAO.getConnection();
 		try{
-		PreparedStatement prepare=connect.prepareStatement("delete from carres where name=?");
+		PreparedStatement prepare=connect.prepareStatement("delete from CARRES where name=?");
 		prepare.setString(1,name);
 		prepare.executeUpdate();
 		connect.close();
@@ -130,10 +109,10 @@ public class CarreJDBC implements DAO<Carre>{
 	    connect = DAO.getConnection();
 	    Carre c = null;
 		try{
-		PreparedStatement prepare=connect.prepareStatement("SELECT * FROM carres WHERE name=?");
+		PreparedStatement prepare=connect.prepareStatement("SELECT * FROM CARRES WHERE name=?");
 		prepare.setString(1,name);
 		ResultSet result =prepare.executeQuery();
-		if(result.first()){
+		if(result.next()){
 			c = new Carre( result.getString("name"), result.getInt("gid"),
 					result.getDouble("l"), 
 					new Point( result.getDouble("x"), result.getDouble("y")));

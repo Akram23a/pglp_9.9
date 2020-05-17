@@ -4,7 +4,7 @@ package PGL.pglp_9_9;
  * @author Akram
  *
  */
-public class CmdMoveSquare implements Command{
+public class CmdMoveSquare implements CmdMove{
 	/**
 	 * 
 	 */

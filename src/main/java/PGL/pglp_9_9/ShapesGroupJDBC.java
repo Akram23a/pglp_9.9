@@ -17,54 +17,31 @@ public class ShapesGroupJDBC implements DAO<ShapesGroup>{
 	/**
 	 * Constructor
 	 */
+	
 
 	public ShapesGroupJDBC() {
-	 try {
-	      connect = DAO.getConnection();
-	      if(connect!= null)
-	    	  System.out.println("Connected database successfully...");
-	      else
-	    	  System.out.println("NOPE");
-
-	      //STEP 4: Execute a query
-	      System.out.println("Creating table in given database...");
-	      stmt = connect.createStatement();
-	      
-	      String sql = "CREATE TABLE IF NOT EXISTS shapesgroups " +
-	                   "(name id(30) not NULL, " +
-	                   " name VARCHAR(30), " +
-	                   " PRIMARY KEY ( id ))"; 
-	      stmt.executeUpdate(sql);
-	      System.out.println("Created table in given database...");
-	   }catch(SQLException se){
-	      //Handle errors for JDBC
-	      se.printStackTrace();
-	   }catch(Exception e){
-	      //Handle errors for Class.forName
-	      e.printStackTrace();
-	   }finally{
-	      //finally block used to close resources
-	      try{
-	         if(stmt!=null)
-	        	connect.close();
-	      }catch(SQLException se){
-	      }// do nothing
-	      try{
-	         if(connect!=null)
-	        	connect.close();
-	      }catch(SQLException se){
-	         se.printStackTrace();
-	      }//end finally try
-	   }//end try
-
-
+		connect = DAO.getConnection();
+		try {
+			ResultSet r = connect.getMetaData().getTables(null, null, "SHAPESGROUPS", null);
+			stmt = connect.createStatement();
+			if(!r.next()) {
+				stmt.execute("CREATE TABLE IF NOT EXISTS SHAPESGROUPS " +
+		                   "(name id(30) not NULL, " +
+		                   " name VARCHAR(30), " +
+		                   " PRIMARY KEY ( id ))");
+			}
+		    stmt.close();
+		    connect.close();
+		}catch(SQLException e) {
+		      e.printStackTrace();
+		}
 	}
 	@Override
 	public ShapesGroup create(ShapesGroup obj) {
 		try{
 		    connect = DAO.getConnection();
 			PreparedStatement prepare = 
-					connect.prepareStatement("INSERT INTO shapesgroups(name,id)"
+					connect.prepareStatement("INSERT INTO SHAPESGROUPS(name,id)"
 												+ " VALUES(?,?)");
 			prepare.setString(1,obj.getName());
 			prepare.setInt(6,obj.getGroupId());
@@ -82,7 +59,7 @@ public class ShapesGroupJDBC implements DAO<ShapesGroup>{
 	public ShapesGroup update(ShapesGroup obj) {
 	    connect = DAO.getConnection();
 	    PreparedStatement update =  null;
-	    String updateString = "update shapesgroups set name = ?, where id = ?";
+	    String updateString = "update SHAPESGROUPS set name = ?, where id = ?";
 	    try {
 	      update = connect.prepareStatement(updateString);
 	      update.setInt(1, obj.getGroupId());
@@ -106,7 +83,7 @@ public class ShapesGroupJDBC implements DAO<ShapesGroup>{
 	public ShapesGroup delete(String name) {
 	    connect = DAO.getConnection();
 		try{
-		PreparedStatement prepare=connect.prepareStatement("delete from shapesgroups where name=?");
+		PreparedStatement prepare=connect.prepareStatement("delete from SHAPESGROUPS where name=?");
 		prepare.setString(1,name);
 		prepare.executeUpdate();
 		connect.close();
@@ -121,10 +98,10 @@ public class ShapesGroupJDBC implements DAO<ShapesGroup>{
 		connect = DAO.getConnection();
 		ShapesGroup c = null;
 		try{
-		PreparedStatement prepare=connect.prepareStatement("SELECT * FROM shapesgroups WHERE name=?");
+		PreparedStatement prepare=connect.prepareStatement("SELECT * FROM SHAPESGROUPS WHERE name=?");
 		prepare.setString(1,name);
 		ResultSet result =prepare.executeQuery();
-		if(result.first()){
+		if(result.next()){
 			c = new ShapesGroup(result.getString("name"), result.getInt("id"));
 			connect.close();
 		}

@@ -5,8 +5,5 @@ package PGL.pglp_9_9;
  *
  */
 public interface Command {
-	/**
-	 * exec
-	 */
-	void execute();
+
 }

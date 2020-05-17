@@ -25,7 +25,7 @@ public class Cercle extends Shape {
 	}
 	@Override
 	public String display() {
-		return " centre : "+centre.display()+" Rayon : "+getRayon();
+		return "nom: "+getName()+" centre : "+centre.display()+" Rayon : "+getRayon()+" Group: "+getGroupId();
 	}
 	/**
 	 * 
