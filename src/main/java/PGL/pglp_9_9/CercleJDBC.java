@@ -5,17 +5,23 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
+/**
+ * 
+ * @author Akram
+ *
+ */
 public class CercleJDBC implements DAO<Cercle>{
 	/**
-	 * 
+	 * connect
 	 */
 	private Connection connect = null;
 	/**
-	 * 
+	 * stmt
 	 */
 	private java.sql.Statement stmt;
-	
+	/**
+	 * constructor
+	 */
 	public CercleJDBC() {
 		connect = DAO.getConnection();
 		try {
@@ -43,7 +49,6 @@ public class CercleJDBC implements DAO<Cercle>{
 			prepare.setDouble(3,obj.getCentre().getY());
 			prepare.setDouble(4,obj.getRayon());
 			prepare.setDouble(5,obj.getGroupId());
-			
 			prepare.executeUpdate();
 			connect.close();
 			}
@@ -52,7 +57,6 @@ public class CercleJDBC implements DAO<Cercle>{
 			}
 		return obj;
 	}
-
 	@Override
 	public Cercle update(Cercle obj) {
 	    connect = DAO.getConnection();
@@ -114,12 +118,18 @@ public class CercleJDBC implements DAO<Cercle>{
 		}
 		return c;
 	}
+	/**
+	 * getter
+	 * @return s
+	 */
 	public java.sql.Statement getPreparedStatement() {
 		return stmt;
 	}
+	/**
+	 * setter
+	 * @param stmt1 s
+	 */
 	public void setPreparedStatement(Statement stmt1) {
 		stmt = (java.sql.Statement) stmt1;
 	}
-	
-
 }

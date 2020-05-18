@@ -8,17 +8,27 @@ import java.util.Scanner;
  *
  */
 public class DrawingApp {
-
+		/**
+		 * scanner
+		 */
 	  private static Scanner sc;
-
+	  /**
+	   * main
+	   * @param args
+	   */
 	public static void main(String[] args) {
-			/*  
+			/* commandes pour utilisation
 			 * exit
-			 * create-cercle-nom-rayon-centreX-centreY
-			 * showall
+			 * create-cercle-nom-id-rayon-centreX-centreY
+			 * showall pour  tout afficher
+			 * create-carre-nom-id-length-bottomleftX-bottomleftY
 			 * 
-			 * 
-			 * 
+			 * exemple:
+			 * create-carre-a-2-5-3-2
+			 * create-cercle-b-1-5-2-3
+			 * create-rectangle-c-4-6-5-1-2
+			 * create-triangle-d-1-2-3-1-5-2-5
+			 * showall to show everything
 			 */
 		    DrawingTui D = new DrawingTui();
 		    System.out.println("Started");
@@ -32,5 +42,6 @@ public class DrawingApp {
 			}
 
 		}
-
+	
 }
+

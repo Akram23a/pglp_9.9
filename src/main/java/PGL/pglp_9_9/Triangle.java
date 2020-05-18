@@ -28,14 +28,17 @@ public class Triangle extends Shape{
 		p3 = new Point(pp3);
 	}
 	@Override
-	public void move(double x1, double y1) {
+	public void move(final double x1, final double y1) {
 		p1.move(x1, y1);
 		p2.move(x1, y1);
 		p3.move(x1, y1);
 	}
 	@Override
 	public String display() {
-		return null;
+		return "Triangle - nom :"+getName()+" p1: "+getP1().display()+
+				" p2: "+getP2().display()+
+				" p3 :"+getP3().display()+
+				" groupe : "+getGroupId();
 	}
 	/**
 	 * 
@@ -48,7 +51,7 @@ public class Triangle extends Shape{
 	 * 
 	 * @param p2
 	 */
-	public void setP2(Point p2) {
+	public void setP2(final Point p2) {
 		this.p2 = p2;
 	}
 	/**
@@ -62,7 +65,7 @@ public class Triangle extends Shape{
 	 * 
 	 * @param p1
 	 */
-	public void setP1(Point p1) {
+	public void setP1(final Point p1) {
 		this.p1 = p1;
 	}
 	/**
@@ -76,7 +79,7 @@ public class Triangle extends Shape{
 	 * 
 	 * @param p3
 	 */
-	public void setP3(Point p3) {
+	public void setP3(final Point p3) {
 		this.p3 = p3;
 	}
 

@@ -1,8 +1,12 @@
 package PGL.pglp_9_9;
-
+/**
+ * 
+ * @author Akram
+ *
+ */
 public class Cercle extends Shape {
 	/**
-	 * 
+	 * centre
 	 */
 	private Point centre;
 	/**
@@ -20,39 +24,42 @@ public class Cercle extends Shape {
 		rayon = r;
 	}
 	@Override
-	public void move(double x1, double y1) {
+	public void move(final double x1, final double y1) {
 		centre.move(x1, y1);
 	}
 	@Override
 	public String display() {
-		return "nom: "+getName()+" centre : "+centre.display()+" Rayon : "+getRayon()+" Group: "+getGroupId();
+		return "Cercle - nom: " + getName() + " centre : " 
+					+ centre.display() + 
+					" rayon : " + getRayon() + 
+					" groupe : " + getGroupId();
 	}
 	/**
-	 * 
-	 * @return
+	 * getter
+	 * @return c
 	 */
 	public Point getCentre() {
 		return centre;
 	}
 	/**
-	 * 
-	 * @param centre1
+	 * setter
+	 * @param centre1 c
 	 */
-	public void setCentre(Point centre1) {
+	public void setCentre(final Point centre1) {
 		this.centre = centre1;
 	}
 	/**
-	 * 
-	 * @return
+	 * getter
+	 * @return r
 	 */
 	public double getRayon() {
 		return rayon;
 	}
 	/**
-	 * 
-	 * @param rayon1
+	 * setter
+	 * @param rayon1 r
 	 */
-	public void setRayon(double rayon1) {
+	public void setRayon(final double rayon1) {
 		this.rayon = rayon1;
 	}
 }

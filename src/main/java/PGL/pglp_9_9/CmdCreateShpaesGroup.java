@@ -1,7 +1,13 @@
 package PGL.pglp_9_9;
 
 public class CmdCreateShpaesGroup implements CmdCreate<ShapesGroup>{
+	/**
+	 * name
+	 */
 	private String name;
+	/**
+	 * id
+	 */
 	private int id;
 	/**
 	 * Constructor

@@ -1,24 +1,26 @@
 package PGL.pglp_9_9;
-
 import java.beans.Statement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
+/**
+ * 
+ * @author Akram
+ *
+ */
 public class CarreJDBC implements DAO<Carre>{
 	/**
-	 * 
+	 * connect
 	 */
 	private Connection connect = null;
 	/**
-	 * 
+	 * statement
 	 */
 	private java.sql.Statement stmt;
 	/**
 	 * Constructor
 	 */
-	
 	public CarreJDBC() {
 		connect = DAO.getConnection();
 		try {
@@ -61,7 +63,6 @@ public class CarreJDBC implements DAO<Carre>{
 			}
 		return obj;
 	}
-
 	@Override
 	public Carre update(Carre obj) {
 	    connect = DAO.getConnection();
@@ -89,7 +90,6 @@ public class CarreJDBC implements DAO<Carre>{
 	    }
 	    return obj;
 	}
-
 	@Override
 	public Carre delete(String name) {
 	    connect = DAO.getConnection();
@@ -124,15 +124,15 @@ public class CarreJDBC implements DAO<Carre>{
 		return c;
 	}
 	/**
-	 * 
-	 * @return
+	 * getter
+	 * @return stmt
 	 */
 	public java.sql.Statement getPreparedStatement() {
 		return stmt;
 	}
 	/**
-	 * 
-	 * @param stmt1
+	 * setter
+	 * @param stmt1 statement
 	 */
 	public void setPreparedStatement(Statement stmt1) {
 		stmt = (java.sql.Statement) stmt1;

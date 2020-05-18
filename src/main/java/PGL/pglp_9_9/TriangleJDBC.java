@@ -5,7 +5,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
+/**
+ * 
+ * @author Akram
+ *
+ */
 public class TriangleJDBC implements DAO<Triangle>{
 	/**
 	 * 
@@ -18,8 +22,6 @@ public class TriangleJDBC implements DAO<Triangle>{
 	/**
 	 * Constructor
 	 */
-	
-	
 	public TriangleJDBC() {
 		connect = DAO.getConnection();
 		try {
@@ -48,8 +50,9 @@ public class TriangleJDBC implements DAO<Triangle>{
 		try{
 		    connect = DAO.getConnection();
 			PreparedStatement prepare = 
-					connect.prepareStatement("INSERT INTO TRIANGLES(name,x1,y1,x2,y2,x3,y3,gid)"
-												+ " VALUES(?,?,?,?,?,?,?,?)");
+					connect.prepareStatement("INSERT INTO TRIANGLES"
+							+ "(name,x1,y1,x2,y2,x3,y3,gid)"
+							+ " VALUES(?,?,?,?,?,?,?,?)");
 			prepare.setString(1,obj.getName());
 			prepare.setDouble(2,obj.getP1().getX());
 			prepare.setDouble(3,obj.getP1().getY());
@@ -72,7 +75,8 @@ public class TriangleJDBC implements DAO<Triangle>{
 	public Triangle update(Triangle obj) {
 	    connect = DAO.getConnection();
 	    PreparedStatement update =  null;
-	    String updateString = "update TRIANGLES set x1 = ?, y1 = ?,x2 = ?, y2 = ?,x3 = ?, y3 = ?, gid = ? where name = ?";
+	    String updateString = "update TRIANGLES set x1 = ?, y1 = ?,x2 = ?"
+	    		+ ", y2 = ?,x3 = ?, y3 = ?, gid = ? where name = ?";
 	    try {
 	    	update = connect.prepareStatement(updateString);
 	      	update.setDouble(1,obj.getP1().getX());

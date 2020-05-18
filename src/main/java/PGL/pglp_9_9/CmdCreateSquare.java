@@ -1,9 +1,25 @@
 package PGL.pglp_9_9;
-
+/**
+ * 
+ * @author Akram
+ *
+ */
 public class CmdCreateSquare implements CmdCreate<Carre> {
+	/**
+	 * name
+	 */
 	private String name;
+	/**
+	 * name
+	 */
 	private Point bottomLeft;
+	/**
+	 * length
+	 */
 	private double length;
+	/**
+	 * id group
+	 */
 	private int groupId;
 
 	/**

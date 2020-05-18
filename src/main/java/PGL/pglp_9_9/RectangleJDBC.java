@@ -5,7 +5,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
+/**
+ * 
+ * @author Akram
+ *
+ */
 public class RectangleJDBC implements DAO<Rectangle>{
 	/**
 	 * 
@@ -117,7 +121,9 @@ public class RectangleJDBC implements DAO<Rectangle>{
 		prepare.setString(1,name);
 		ResultSet result =prepare.executeQuery();
 		if(result.next()){
-			c = new Rectangle(result.getString("name"), result.getInt("gid"), new Point( result.getDouble("x"), result.getDouble("y")),
+			c = new Rectangle(result.getString("name"), 
+					result.getInt("gid"), new Point( result.getDouble("x"), 
+							result.getDouble("y")),
 					result.getDouble("h"), result.getDouble("w"));
 			connect.close();
 		}
@@ -137,7 +143,7 @@ public class RectangleJDBC implements DAO<Rectangle>{
 	 * 
 	 * @param stmt1
 	 */
-	public void setPreparedStatement(Statement stmt1) {
+	public void setPreparedStatement(final Statement stmt1) {
 		stmt = (java.sql.Statement) stmt1;
 	}
 

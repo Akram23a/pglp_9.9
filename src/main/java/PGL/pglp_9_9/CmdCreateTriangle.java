@@ -5,15 +5,25 @@ package PGL.pglp_9_9;
  *
  */
 public class CmdCreateTriangle implements CmdCreate<Triangle>{
-
+		/**
+		 * 
+		 */
 	  private String name;
-
+	  /**
+	   * 
+	   */
 	  private Point p1;
-
+	  /**
+	   * 
+	   */
 	  private Point p2;
-
+	  /**
+	   * 
+	   */
 	  private Point p3;
-
+	  /**
+	   * 
+	   */
 	  private int groupId;
 	  /**
 	   * Constructor

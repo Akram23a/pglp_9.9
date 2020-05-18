@@ -1,12 +1,18 @@
 package PGL.pglp_9_9;
 
 public class Rectangle extends Shape{
-	
+	/**
+	 * 
+	 */
 	private Point bottomLeft;
+	/**
+	 * 
+	 */
 	private double height;
+	/**
+	 * 
+	 */
 	private double width;
-	
-
 	/**
 	 * Constructor
 	 * @param string
@@ -29,32 +35,51 @@ public class Rectangle extends Shape{
 
 	@Override
 	public String display() {
-		return "Carre : "+this.getGroupId()+
-				" LeftBottom "+this.bottomLeft.display()+
-				" Height :"+height+" Width :"+width;
+		return "Rectangle - nom : " + getName() + 
+				" bas-gauche: " + this.bottomLeft.display() +
+				" longueur :" + height + " largeur :" + width
+				+ " groupe : " + getGroupId();
 	}
-
+	/**
+	 * 
+	 * @return
+	 */
 	public Point getBottomLeft() {
 		return bottomLeft;
 	}
-
+	/**
+	 * 
+	 * @param bottomLeft
+	 */
 	public void setBottomLeft(Point bottomLeft) {
 		this.bottomLeft = bottomLeft;
 	}
-
+	/**
+	 * 
+	 * @return
+	 */
 	public double getHeight() {
 		return height;
 	}
-
-	public void setHeight(double height) {
+	/**
+	 * 
+	 * @param height
+	 */
+	public void setHeight(final double height) {
 		this.height = height;
 	}
-
+	/**
+	 * 
+	 * @return
+	 */
 	public double getWidth() {
 		return width;
 	}
-
-	public void setWidth(double width) {
+/**
+ * 
+ * @param width
+ */
+	public void setWidth(final double width) {
 		this.width = width;
 	}
 

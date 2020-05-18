@@ -10,7 +10,7 @@ public interface GraphicShape {
 	 * @param x X
 	 * @param y Y
 	 */
-	  public void move(double x,double y);
+	  public void move(final double x,final double y);
 	  /**
 	   * Show
 	   * @return string

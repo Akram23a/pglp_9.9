@@ -5,13 +5,17 @@ package PGL.pglp_9_9;
  *
  */
 public class CmdCreateRectangle implements CmdCreate<Rectangle>{
-	
+	/**
+	 * rect name
+	 */
 	private String name;
+	/**
+	 * bottom left
+	 */
 	private Point bottomLeft;
 	private double height;
 	private double width;
 	private int groupId;
-
 	/**
 	 * Constructor
 	 * @param name1
@@ -20,14 +24,14 @@ public class CmdCreateRectangle implements CmdCreate<Rectangle>{
 	 * @param int2
 	 * @param groupId1
 	 */
-	public CmdCreateRectangle(String name1,Point point1,double int1,double int2,int groupId1) {
-	    name = name1;
+	public CmdCreateRectangle(final String name1, final int groupId1, final Point point1, final double int1, final double int2) {
+		name = name1;
 	    bottomLeft = point1;
 	    height = int1;
-	    height = int2;
+	    width = int2;
 	    groupId = groupId1;
 	  }
-
+	
 	  @Override
 	  public Rectangle execute() {
 		return new Rectangle(name, groupId, bottomLeft, height, width);

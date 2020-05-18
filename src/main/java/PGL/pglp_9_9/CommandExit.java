@@ -5,8 +5,10 @@ package PGL.pglp_9_9;
  *
  */
 public class CommandExit implements Command{
-
-	  public void execute() {
+	/**
+	 * exec
+	 */
+	public void execute() {
 	    Runtime.getRuntime().exit(0);	
 	  }
 }

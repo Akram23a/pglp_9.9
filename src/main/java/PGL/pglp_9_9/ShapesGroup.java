@@ -1,12 +1,11 @@
 package PGL.pglp_9_9;
+import java.util.ArrayList;
+import java.util.List;
 /**
  * 
  * @author Akram
  *
  */
-import java.util.ArrayList;
-import java.util.List;
-
 public class ShapesGroup extends Shape implements GraphicShape{
 	/**
 	 * Name
@@ -81,7 +80,7 @@ public class ShapesGroup extends Shape implements GraphicShape{
 	 * 
 	 * @param groupId
 	 */
-	public void setGroupId(int groupId) {
+	public void setGroupId(final int groupId) {
 		this.groupId = groupId;
 	}
 	/**
@@ -95,7 +94,7 @@ public class ShapesGroup extends Shape implements GraphicShape{
 	 * 
 	 * @param shapes
 	 */
-	public void setShapes(List<Shape> shapes) {
+	public void setShapes(final List<Shape> shapes) {
 		this.shapes = shapes;
 	}
 	/**
@@ -110,7 +109,7 @@ public class ShapesGroup extends Shape implements GraphicShape{
 	    return this.getGroupName()+result;
 	  }
 	@Override
-	public void move(double x, double y) {
+	public void move(final double x, final double y) {
 	    for (Shape shape : shapes) {
 	        shape.move(x, y);
 	      }

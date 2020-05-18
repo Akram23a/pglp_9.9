@@ -18,10 +18,10 @@ public class CercleDaoTest {
 		CercleJDBC jdbcShape=new CercleJDBC();
 
 	    Point point = new Point(0.0,0.0);
-		Cercle  c2= new Cercle("c7",2,point,2.0);
+		Cercle  c2= new Cercle("c11",2,point,2.0);
 		jdbcShape.create(c2);
-	    Cercle c = jdbcShape.find("c7");
-	    assertEquals(c.getName(),"c7");
+	    Cercle c = jdbcShape.find("c11");
+	    assertEquals(c.getName(),"c11");
 	    Double x = c.getCentre().getX();
 	    Double y = c.getCentre().getY();
 	    Double redius = c.getRayon();

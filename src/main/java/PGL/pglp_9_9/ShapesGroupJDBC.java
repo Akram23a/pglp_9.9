@@ -4,7 +4,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
+/**
+ * 
+ * @author Akram
+ *
+ */
 public class ShapesGroupJDBC implements DAO<ShapesGroup>{
 	/**
 	 * 
@@ -17,8 +21,6 @@ public class ShapesGroupJDBC implements DAO<ShapesGroup>{
 	/**
 	 * Constructor
 	 */
-	
-
 	public ShapesGroupJDBC() {
 		connect = DAO.getConnection();
 		try {
@@ -41,8 +43,9 @@ public class ShapesGroupJDBC implements DAO<ShapesGroup>{
 		try{
 		    connect = DAO.getConnection();
 			PreparedStatement prepare = 
-					connect.prepareStatement("INSERT INTO SHAPESGROUPS(name,id)"
-												+ " VALUES(?,?)");
+					connect.prepareStatement("INSERT INTO "
+							+ "SHAPESGROUPS(name,id)"
+							+ " VALUES(?,?)");
 			prepare.setString(1,obj.getName());
 			prepare.setInt(6,obj.getGroupId());
 			
@@ -59,7 +62,8 @@ public class ShapesGroupJDBC implements DAO<ShapesGroup>{
 	public ShapesGroup update(ShapesGroup obj) {
 	    connect = DAO.getConnection();
 	    PreparedStatement update =  null;
-	    String updateString = "update SHAPESGROUPS set name = ?, where id = ?";
+	    String updateString = "update SHAPESGROUPS "
+	    		+ "set name = ?, where id = ?";
 	    try {
 	      update = connect.prepareStatement(updateString);
 	      update.setInt(1, obj.getGroupId());
@@ -83,7 +87,9 @@ public class ShapesGroupJDBC implements DAO<ShapesGroup>{
 	public ShapesGroup delete(String name) {
 	    connect = DAO.getConnection();
 		try{
-		PreparedStatement prepare=connect.prepareStatement("delete from SHAPESGROUPS where name=?");
+		PreparedStatement prepare=connect.
+				prepareStatement("delete from SHAPESGROUPS "
+						+ "where name=?");
 		prepare.setString(1,name);
 		prepare.executeUpdate();
 		connect.close();

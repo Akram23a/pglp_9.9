@@ -33,7 +33,7 @@ public abstract class Shape implements GraphicShape{
 	  /**
 	   * @param name1 
 	   */
-	  public void setName(String name1) {
+	  public void setName(final String name1) {
 	    name = name1;
 	  }
 
@@ -46,10 +46,9 @@ public abstract class Shape implements GraphicShape{
 	  /**
 	   * @param groupId1 
 	   */
-	  public void setGroupId(int groupId1) {
+	  public void setGroupId(final int groupId1) {
 			this.groupId = groupId1;
 		}
-
 	  /**
 	   * Show
 	   */
