@@ -1,5 +1,9 @@
 package PGL.pglp_9_9;
-
+/**
+ * 
+ * @author Akram
+ *
+ */
 public class CmdCreateShpaesGroup implements CmdCreate<ShapesGroup>{
 	/**
 	 * name

@@ -28,7 +28,7 @@ public class TriangleJDBC implements DAO<Triangle>{
 			ResultSet r = connect.getMetaData().getTables(null, null, "TRIANGLES", null);
 			stmt = connect.createStatement();
 			if(!r.next()) {
-				stmt.execute( "CREATE TABLE IF NOT EXISTS TRIANGLES " +
+				stmt.execute( "CREATE TABLE TRIANGLES " +
 		                   "(name VARCHAR(30) not NULL, " +
 		                   " x1 DOUBLE, " + 
 		                   " y1 DOUBLE, " + 

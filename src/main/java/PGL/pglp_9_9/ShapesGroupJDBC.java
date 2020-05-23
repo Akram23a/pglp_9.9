@@ -24,10 +24,11 @@ public class ShapesGroupJDBC implements DAO<ShapesGroup>{
 	public ShapesGroupJDBC() {
 		connect = DAO.getConnection();
 		try {
-			ResultSet r = connect.getMetaData().getTables(null, null, "SHAPESGROUPS", null);
+			ResultSet r = connect.getMetaData().
+					getTables(null, null, "SHAPESGROUPS", null);
 			stmt = connect.createStatement();
 			if(!r.next()) {
-				stmt.execute("CREATE TABLE IF NOT EXISTS SHAPESGROUPS " +
+				stmt.execute("CREATE TABLE SHAPESGROUPS " +
 		                   "(name id(30) not NULL, " +
 		                   " name VARCHAR(30), " +
 		                   " PRIMARY KEY ( id ))");
@@ -104,11 +105,14 @@ public class ShapesGroupJDBC implements DAO<ShapesGroup>{
 		connect = DAO.getConnection();
 		ShapesGroup c = null;
 		try{
-		PreparedStatement prepare=connect.prepareStatement("SELECT * FROM SHAPESGROUPS WHERE name=?");
+		PreparedStatement prepare=connect.
+				prepareStatement("SELECT * FROM SHAPESGROUPS"
+						+ " WHERE name=?");
 		prepare.setString(1,name);
 		ResultSet result =prepare.executeQuery();
 		if(result.next()){
-			c = new ShapesGroup(result.getString("name"), result.getInt("id"));
+			c = new ShapesGroup(result.getString("name"), 
+					result.getInt("id"));
 			connect.close();
 		}
 		}catch(SQLException e){

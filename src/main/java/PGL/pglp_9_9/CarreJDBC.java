@@ -27,7 +27,7 @@ public class CarreJDBC implements DAO<Carre>{
 			ResultSet r = connect.getMetaData().getTables(null, null, "CARRES", null);
 			stmt = connect.createStatement();
 			if(!r.next()) {
-				stmt.execute("CREATE TABLE IF NOT EXISTS CARRES " +
+				stmt.execute("CREATE TABLE CARRES " +
 					    "(name VARCHAR(30) not NULL, " +
 					    " x DOUBLE, " + 
 					    " y DOUBLE, " + 

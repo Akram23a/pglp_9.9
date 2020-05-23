@@ -13,7 +13,9 @@ public class DrawingTui {
 	 */
 	private List<Shape> shapes;
 
-	
+	/**
+	 * constructor
+	 */
     public DrawingTui(){
     	
     	setShapes(new ArrayList<Shape>());
@@ -41,11 +43,37 @@ public class DrawingTui {
         	    }
         	    System.out.println(show);
         	    break;
+        	    
         	case "exit":
         		command = new CommandExit();
         		((CommandExit)command).execute();
         		break;
-        	
+        		
+        	case "save":
+        		for(Shape s: shapes) {
+        			if(s instanceof Carre) {
+        	    		CmdSave Q = new CmdSave((Carre)s);
+        	    		Q.execute();
+        	    	}else if(s instanceof Cercle) {
+        	    		CmdSave Q = new CmdSave((Cercle)s);
+        	    		Q.execute();
+        	    	}else if(s instanceof Triangle) {
+        	    		CmdSave Q = new CmdSave((Triangle)s);
+        	    		Q.execute();
+        	    	}else if(s instanceof Rectangle) {
+        	    		CmdSave Q = new CmdSave((Rectangle)s);
+        	    		Q.execute();
+        	    	}
+        		}
+                 break;
+                 
+        	case "load":
+        	    CmdLoad Q = new CmdLoad(text[1],text[2]);
+        	    shapes.add(Q.execute());
+        	    System.out.println("Shape loaded");
+            break;
+
+                 
         	case "move":
                  shape = findShape(text[1].toLowerCase());
                  double x1 = Double.parseDouble(text[2]);
@@ -170,7 +198,7 @@ public class DrawingTui {
     		 return null;	
     	}
     /**
-     * Interpreuteur du deplacements
+     * Interpreuteur des deplacements
      * @param shape
      * @param x
      * @param y
