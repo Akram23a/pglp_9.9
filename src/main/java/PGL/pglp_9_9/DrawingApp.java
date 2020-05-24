@@ -47,7 +47,7 @@ public class DrawingApp {
 		
 		System.out.println("-------- Other commands ---------");
 		System.out.println("exit : to exit software");
-		System.out.println("save : to save all  ------- doesn't work yet");
+		System.out.println("save : to save all  ------- ");
 		System.out.println("showall : to show all");
 		System.out.println("\n");
 
