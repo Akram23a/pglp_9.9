@@ -5,22 +5,18 @@ package PGL.pglp_9_9;
  *
  */
 public class Carre extends Shape {
-	/**
-	 * BL
-	 */
+
 	private Point bottomLeft;
-	/**
-	 * L
-	 */
 	private double length;
 	/**
 	 * Carre
-	 * @param name1
-	 * @param id1
-	 * @param length1
-	 * @param p1
+	 * @param name1 name
+	 * @param id1 id
+	 * @param length1 length
+	 * @param p1 point1
 	 */
-	public Carre(final String name1, int id1, final double length1, final Point p1) {
+	public Carre(final String name1, final int id1,
+			final double length1, final Point p1) {
 		super(name1, id1);
 		setBottomLeft(new Point(p1));
 		setLength(length1);
@@ -28,7 +24,7 @@ public class Carre extends Shape {
 
 	@Override
 	public void move(final double x, final double y) {
-		bottomLeft.move(x,y);
+		bottomLeft.move(x, y);
 	}
 
 	@Override
@@ -39,17 +35,17 @@ public class Carre extends Shape {
 	}
 	/**
 	 * 
-	 * @return string
+	 * @return bottomleft
 	 */
 	public Point getBottomLeft() {
 		return bottomLeft;
 	}
 	/**
 	 * setter
-	 * @param bottomLeft BL
+	 * @param bottomLeft1 BL
 	 */
-	public void setBottomLeft(final Point bottomLeft) {
-		this.bottomLeft = bottomLeft;
+	public void setBottomLeft(final Point bottomLeft1) {
+		this.bottomLeft = bottomLeft1;
 	}
 	/**
 	 * getter
@@ -60,9 +56,9 @@ public class Carre extends Shape {
 	}
 	/**
 	 * setter
-	 * @param length l
+	 * @param length1 l
 	 */
-	public void setLength(final double length) {
-		this.length = length;
+	public void setLength(final double length1) {
+		this.length = length1;
 	}
 }
